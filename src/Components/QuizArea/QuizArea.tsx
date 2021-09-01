@@ -5,7 +5,7 @@ import "./QuizArea.css"
 import quizData from "../../database";
 import { QuizData } from "../../Types/QuizType";
 import ScoreCard from "../ScoreCard/ScoreCard";
-import { uuid } from "uuidv4";
+import { uuid as v4 } from "uuidv4";
 const QuizArea = () => {
   const { id } = useParams();
   const { dispatch } = useQuiz();
@@ -24,13 +24,20 @@ const QuizArea = () => {
     }
   };
 
+  if (timer === 0 && quiz.length > current1) {
+    setCurrent1((current)=>current + 1);
+    if (current1 < quiz.length - 1) {
+    setTimer(15);
+  }
+  }
+
   const CalculateScore = (score: number) => {
     const dividend = (score / quiz.length) * 10;
     return dividend;
   };
-  useEffect(() => {
 
-    
+  
+  useEffect(() => {
 
     let time =
       timer >= 1 && (window.setTimeout(() => next(), 1000) as number);
@@ -38,9 +45,7 @@ const QuizArea = () => {
       const next = () => {
         setTimer(timer - 1);
       }; 
-    if (timer === 0) {
-      nextQuestion();
-    }
+    
     return () => clearInterval(time as number);
   },[timer]);
 
@@ -65,7 +70,7 @@ const QuizArea = () => {
             <ol>
               {quiz[current1].options.map(({ option, isRight }) => {
                 return ( 
-                  <li key = {uuid()}
+                  <li key = {v4()}
                     onClick={() => {
                       dispatch({
                         type: "SELECT ANSWER",
