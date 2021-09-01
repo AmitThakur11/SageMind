@@ -1,8 +1,8 @@
-import {useEffect} from "react"
+
 import quizData from "../../database";
 import "./Home.css"
 import { Link } from "react-router-dom";
-import { initialState, useQuiz } from "../../Context/QuizContext";
+import {  useQuiz } from "../../Context/QuizContext";
 const Home = () => {
   const { dispatch } = useQuiz();
   (()=>{

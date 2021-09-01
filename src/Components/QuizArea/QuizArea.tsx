@@ -42,7 +42,7 @@ const QuizArea = () => {
       nextQuestion();
     }
     return () => clearInterval(time as number);
-  }, [timer]);
+  },[timer]);
 
   return (
     <section className="quiz-section">

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import { useAuth } from "../../Context/AuthContext";
 const Header = () => {
 
-  const {authState , authDispatch} = useAuth()
+  const {authState} = useAuth()
   const [menu , setMenu] = useState(false)
   return (
     <section className ="navbar">
