@@ -1,0 +1,67 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .instruction{
+    width : 100vw;
+    height:85vh;
+    display: grid;
+    place-content: center;
+    
+  }
+  .instruction-box{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    padding:40px;
+    background: #fff;
+    line-height:2.4em;
+  
+  }
+  
+  .rules-title{
+    font-size : 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    
+  }
+  .rules-section{
+    text-align: justify;
+  }
+  
+  @media(max-width:680px){
+    .instruction{
+      display: grid;
+      place-items : center;
+      padding: 20px;
+     
+  
+    }
+    .instruction-box{
+      width :95%;
+      padding: 10px 30px;
+      line-height: 1.8em;
+      text-align: justify;
+    }
+    .rules-title{
+      font-size : 20px;
+    }
+    .rules-title{
+      line-height: 1.2em;
+      width :100%;
+      
+  
+    }
+    .rules-section{
+      font-size: 14px;
+      margin-bottom :20px;
+    }
+  
+    .score-btn>button{
+      font-size: 18px;
+    }
+  
+  
+  
+  }

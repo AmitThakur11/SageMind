@@ -5,10 +5,30 @@
     margin :0;
     padding:0;
     box-sizing: border-box;
+    color:black;
+    text-decoration: none;
+}
+body{
+    background-image : url("https://images.unsplash.com/photo-1569531115477-5e9a74a6a8ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwYXR0ZXJufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-size: contain;
 }
 
 .App{
        width:100vw;
        font-family: 'Chau Philomene One', sans-serif;
     
+}
+
+.content{
+    margin-top : 85px;
+    width: 100%;
+    
+    height : 80vh;
+}
+
+@media(max-width : 650px){
+    .content{
+        margin-top:60px;
+      
+    }
 }
