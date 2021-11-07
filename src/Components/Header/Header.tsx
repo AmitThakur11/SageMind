@@ -1,10 +1,7 @@
 import "./Header.css";
 import {useState} from "react"
 import {Link} from "react-router-dom"
-import { useAuth } from "../../Context/AuthContext";
 const Header = () => {
-
-  const {authState} = useAuth()
   const [menu , setMenu] = useState(false)
   return (
     <section className ="navbar">
@@ -29,10 +26,10 @@ const Header = () => {
             <div className="last">MIND</div>
         </div>
           </div>
-          <Link to ="/profile"><div>PROFILE</div></Link>
-          <Link to ="/leaderboard"><div>LEADERBOARD</div></Link>
+          <Link to ="/"><div>QUIZ</div></Link>
+          {/* <Link to ="/leaderboard"><div>LEADERBOARD</div></Link> */}
           <Link to ="/about"><div>ABOUT</div></Link>
-          <Link to="/login"><div  className="login-btn">{authState.login ? `Log out` : `Log in`}</div></Link>
+          {/* <Link to="/login"><div  className="login-btn">{authState.login ? `Log out` : `Log in`}</div></Link> */}
           
         </div>
       </header>

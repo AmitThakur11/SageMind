@@ -11,6 +11,9 @@ const QuizArea = () => {
   const { dispatch } = useQuiz();
   const [current1, setCurrent1] = useState(0);
   const [timer, setTimer] = useState(15);
+  
+
+ 
   const chosenQuiz = quizData.find(
     (quiz) => quiz.id === parseInt(id, 10)
   ) as QuizData;
@@ -37,6 +40,7 @@ const QuizArea = () => {
   };
 
   
+  
   useEffect(() => {
 
     let time =
@@ -53,7 +57,7 @@ const QuizArea = () => {
     <section className="quiz-section">
       {quiz.length > current1 ? (
         <div className="quiz-card">
-          <div className="current-question">{current1 + 1}/5</div>
+          <div className="current-question">{current1 + 1}/{quiz.length}</div>
 
           <div className="timer-section">
             <img
@@ -93,8 +97,10 @@ const QuizArea = () => {
           </div>
         </div>
       ) : (
-        <ScoreCard cal_score={CalculateScore} />
-      )}
+        <div>
+         <ScoreCard cal_score ={CalculateScore} quiz ={quiz} /> 
+        </div>)
+      }
     </section>
   );
 };

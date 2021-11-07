@@ -1,17 +1,28 @@
-import React from "react";
+import React , {useState} from "react";
 import "./ScoreCard.css"
 import { useQuiz } from "../../Context/QuizContext";
-import quizData from "../../database";
+// import quizData from "../../database";
+import { Quiz } from "../../Types/QuizType";
 import { useNavigate } from "react-router";
+import { UserResponse } from "../UserResult/UserResult";
+
+
+
 
 type ScoreCardProps = {
   cal_score(score: number): number;
+  quiz : Quiz[]
 };
-const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score }) => {
+const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score , quiz   }) => {
   const { state ,dispatch } = useQuiz();
   const navigate = useNavigate()
+  const [showResponse , setResponse] = useState<boolean>(false);
+
+  
   return (
-    <div className="score-card">
+    <div>
+      {
+    !showResponse ? <div className="score-card">
       <div className="score-img">
         {cal_score(state.score) >= 0 && cal_score(state.score) <= 20 && (
           <>
@@ -45,10 +56,10 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score }) => {
         )}
       </div>
       <div className="score">
-        Score : {state.score}/{quizData[0].quiz.length * 10}
+        Score : {state.score}/{quiz.length * 10}
       </div>
       <div className="score-btn">
-        <button className="btn-1">Save</button>
+        <button className="btn-1" onClick ={()=>{setResponse((res)=>!res)}}>Answers</button>
         <button className="btn-2" onClick = {()=>{
           dispatch({type : "RESET",payload:{}})
           navigate("/")
@@ -59,6 +70,8 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score }) => {
         src="https://i.ibb.co/cFjKjRQ/003-ninja.png"
         alt="/"
       />
+    </div> : (<UserResponse quiz={quiz} setResponse ={setResponse}/>)}
+
     </div>
   );
 };
