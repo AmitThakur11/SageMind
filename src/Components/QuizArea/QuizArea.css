@@ -63,6 +63,14 @@
     width: 170px;
     padding: 10px;
     font-size: 18px;
+    transition: ease-in-out 300ms;
+  }
+
+  .quiz-options > ol > li:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+    cursor: pointer;
   }
 
 

@@ -23,11 +23,17 @@
   .responseBox > button{
     position: absolute;
     top:10px;
+    cursor: pointer;
     right: 10px;
-    color:red;
+    
     background-color: transparent;
     border:0px;
     font-size: 28px;
+    transition: ease-in-out 600ms;
+  }
+  .responseBox > button:hover{
+    transform: rotate(360deg) scale(1.1);
+
   }
   .response{
     background-color:rgb(255, 255, 255);
