@@ -69,7 +69,8 @@ header{
     
 }
 .header-options > a{
-    padding:3px 7px;
+    padding:10px;
+    font-size: 20px;
 }
 .login-btn{
     background-color: #1F2937;
