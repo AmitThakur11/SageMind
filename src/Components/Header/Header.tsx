@@ -33,7 +33,7 @@ const Header = () => {
             </div>
           </div>
           <Link to="/">
-            <div>QUIZ</div>
+            <div onClick={() => setMenu(false)}>QUIZ</div>
           </Link>
           
             <a href ="https://github.com/AmitThakur11">
