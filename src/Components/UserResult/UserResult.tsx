@@ -2,6 +2,7 @@ import "./style.css";
 import React from "react";
 import { Quiz } from "../../Types/QuizType";
 import { FaRegTimesCircle} from "react-icons/fa";
+import { useQuiz } from "../../Context/QuizContext";
 
 export type UserResponseProps = {
     quiz :Quiz[],
@@ -10,6 +11,8 @@ export type UserResponseProps = {
 }
 
 export const UserResponse:React.FC<UserResponseProps> =({quiz , setResponse})=>{
+
+  const {state : {questionsAnswered}} = useQuiz()
   
   return (
     <div className="UserResult">
@@ -18,16 +21,12 @@ export const UserResponse:React.FC<UserResponseProps> =({quiz , setResponse})=>{
           <button onClick ={()=>setResponse(false)}><FaRegTimesCircle/></button>
           <div className ="response">
             {
-              quiz.map(({question,options})=>{
+              questionsAnswered.map(({question,rightValue,chosenValue, yourChoice})=>{
                 return <>
                 <div className ="responseCard">
                 <div className ="question">{question}</div>
-                <div>{options.map((option)=>{
-                  return(<>
-                    {option.isRight&& <div className ="rightOption">{option.option}</div>}
-                    </>
-                  )
-                })}</div>
+                {!yourChoice && <div className ="wrongChoice">{chosenValue}</div>}
+                <div className ="rightOption">{rightValue}</div>
                 </div>
                 </>
               })

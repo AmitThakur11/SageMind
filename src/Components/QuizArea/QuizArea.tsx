@@ -5,11 +5,11 @@ import "./QuizArea.css"
 import quizData from "../../database";
 import { QuizData } from "../../Types/QuizType";
 import ScoreCard from "../ScoreCard/ScoreCard";
-import { uuid as v4 } from "uuidv4";
 const QuizArea = () => {
   const { id } = useParams();
   const { dispatch } = useQuiz();
   const [current1, setCurrent1] = useState(0);
+  const [count,setCount]=useState(0)
   const [timer, setTimer] = useState(15);
   
 
@@ -21,6 +21,7 @@ const QuizArea = () => {
 
   
   const nextQuestion = () => {
+    setCount((count)=>count+1)
     setCurrent1(current1 + 1);
     if (current1 < quiz.length - 1) {
       setTimer(15);
@@ -28,6 +29,7 @@ const QuizArea = () => {
   };
 
   if (timer === 0 && quiz.length > current1) {
+    setCount((count)=>count+1)
     setCurrent1((current)=>current + 1);
     if (current1 < quiz.length - 1) {
     setTimer(15);
@@ -38,6 +40,7 @@ const QuizArea = () => {
     const dividend = (score / quiz.length) * 10;
     return dividend;
   };
+
 
   
   
@@ -72,17 +75,20 @@ const QuizArea = () => {
           <div className="quiz-question">{quiz[current1].question}</div>
           <div className="quiz-options">
             <ol>
-              {quiz[current1].options.map(({ option, isRight }) => {
+              {quiz[count].options.map(({ option, isRight }) => {
                 return ( 
-                  <li key = {v4()}
+                  <li key = {option}
                     onClick={() => {
+                      const findRight = (count: number)=>quiz[count].options?.find(({isRight})=>isRight === true)?.option;
                       dispatch({
                         type: "SELECT ANSWER",
                         payload: {
                           answer: isRight,
                           quizAnswer: {
+                            rightValue : findRight(count),
                             question: quiz[current1].question,
                             chosenValue: option
+                           
                           }
                         }
                       });

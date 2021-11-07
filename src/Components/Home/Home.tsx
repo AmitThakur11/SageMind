@@ -15,7 +15,7 @@ const Home = () => {
       <div className ="home-sub-section">
         {quizData.map((quiz) => {
           return (
-            <Link to={`/quizinfo/${quiz.id}`}>
+            <Link to={`/quizinfo/${quiz.id}`} key ={quiz.id}>
             <section className ="quiz-picker"
               key={quiz.id}
               onClick={() =>

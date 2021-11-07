@@ -22,6 +22,7 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
       return { ...state, quiz_id: findQuiz.id as number };
     }
     case "SELECT ANSWER": {
+      
       if (answer) {
         return {
           ...state,
@@ -33,6 +34,7 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
               question: quizAnswer?.question,
               chosenValue: quizAnswer?.chosenValue,
               yourChoice: answer,
+              rightValue : quizAnswer?.rightValue
             },
           ],
         };
@@ -45,7 +47,8 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
           {
             question: quizAnswer?.question,
             chosenValue: quizAnswer?.chosenValue,
-            yourChoice: false,
+            yourChoice: answer,
+            rightValue: quizAnswer?.rightValue
           },
         ],
       };

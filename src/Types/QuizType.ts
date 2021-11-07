@@ -21,6 +21,7 @@ export type Option = {
     question?: string;
     chosenValue?: string;
     yourChoice?: boolean;
+    rightValue?:string;
     
   };
   
@@ -38,6 +39,7 @@ export type Option = {
   export type QuizAnswer = {
     question?: string;
     chosenValue?: string;
+    rightValue ?: string;
 
   }
   export type  Payload = {
