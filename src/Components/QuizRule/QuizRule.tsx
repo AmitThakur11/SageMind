@@ -1,11 +1,18 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {rules} from "../../database";
+import { useQuiz } from "../../Context/QuizContext";
 import "./QuizRule.css"
-import {v4 as uuid} from 'uuid'
+import {v4 as uuid} from 'uuid';
+import {useEffect} from 'react'
+
+
 const QuizRule = () => {
   const { id } = useParams();
-  console.log(id);
+  const {dispatch} = useQuiz()
+  useEffect(() => dispatch({type : "RESET" , payload : {}}), [dispatch])
+
+
   return (
     <section className="instruction">
       <div className="instruction-box">
