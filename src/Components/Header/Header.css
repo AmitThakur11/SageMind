@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap');
+
+
+
+.navbar{
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100vw;
+    background-color: white;
+    top:0;
+    z-index: 1111;
+}
+header{
+    width: 95%;
+    align-self: center;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+   
+    margin-top:5px;
+    border-radius: 5px;
+    place-items: center;
+    z-index :9999;
+    
+}
+.logo{
+    height:100%;
+    display:flex;
+    place-items: center;
+    font-size: 22px;
+    font-family: 'Chau Philomene One', sans-serif;
+    
+}
+.logo > img{
+    height: 100%;
+}
+
+.name{
+    display: flex;
+    line-height: 22px;
+    flex-direction: column;
+    background-color: #1F2937;
+    color:white;
+    padding:5px;
+    margin-left: 5px;
+    font-weight: 400;
+}
+.name > .first{
+    color:rgba(237,102,76,255)
+
+}
+
+.name > .last{
+    color:#fff;
+
+}
+
+
+.menu{
+    display: none;
+
+}
+.header-options{
+    font-size: 18px;
+    display: inline-flex;
+    margin-left: 10px;
+    
+}
+.header-options > a{
+    padding:10px;
+    font-size: 20px;
+}
+.login-btn{
+    background-color: #1F2937;
+    color:white;
+    padding:2px 6px;
+    transition:0.3s ease-in-out;
+}
+.sidebar-logo{
+    display: none;
+}
+
+.login-btn:hover{
+    transform: scale(1.1);
+    background-color: rgb(235, 81, 26);
+    
+}
+@media(max-width : 620px){
+    header{
+        flex-direction: row-reverse;
+        height: 60px;
+    }
+    .menu{
+        display: block;
+        font-size: 24px;
+        color:#1F2937;
+
+
+
+    }
+    .header-options{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        align-self: center;
+        width:200px;
+        height: 100vh;
+        top:0;
+        margin: auto;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        line-height: 1.6em;
+        background-color: rgb(255, 255, 255);
+        transition:  0.7s ease-in-out;
+    }
+
+    .off{
+        left : -202px
+
+    }
+    .active{
+        left : 0;
+        
+    }
+
+    .login-btn{
+        width: fit-content;
+
+        margin-left:8px;
+    }
+
+    .sidebar-logo{
+        display: flex;
+        margin:30px  0px;
+        height:50px;
+        justify-content: center;
+        display:flex;
+        place-items: center;
+        background: white;
+        z-index: 9999;
+        font-size: 22px;
+        font-family: 'Chau Philomene One', sans-serif;
+        
+
+    }
+    .sidebar-logo>img{
+        width : 50px;
+    }
+    .header-options > div{
+        margin-top:10px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
