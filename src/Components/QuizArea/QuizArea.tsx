@@ -2,12 +2,12 @@ import { useParams } from "react-router";
 import { useQuiz } from "../../Context/QuizContext";
 import { useState, useEffect } from "react";
 import "./QuizArea.css"
-import { QuizData ,Quiz,Quizes,QuizAxiosType} from "../../Types/QuizType";
+import { QuizData ,Quiz, QuizAxiosType} from "../../Types/QuizType";
 import axios ,{AxiosError} from "axios"
 import ScoreCard from "../ScoreCard/ScoreCard";
 const QuizArea = () => {
   const { id } = useParams();
-  const { dispatch ,quizes , loading ,setLoading} = useQuiz();
+  const { dispatch ,loading ,setLoading} = useQuiz();
   const [current1, setCurrent1] = useState(0);
   const [quiz,setQuiz] = useState([] as Quiz[]);
 
@@ -59,7 +59,7 @@ const QuizArea = () => {
     (async()=>{
       try{
       setLoading(true)
-      const response = await axios.get<QuizAxiosType>("http://localhost:5000/quiz");
+      const response = await axios.get<QuizAxiosType>("https://sagemindbase.herokuapp.com/quiz");
       const chosenQuiz = response.data.quizes.quizData.find(
             (quiz) => quiz.id === parseInt(id, 10)
           ) as QuizData;
@@ -74,7 +74,7 @@ const QuizArea = () => {
 
     }})()
         
-  }, [setLoading,setQuiz])
+  }, [setLoading,setQuiz,id])
   return (
     <>
     {!loading && <section className="quiz-section">

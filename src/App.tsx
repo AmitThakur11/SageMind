@@ -21,7 +21,7 @@ function App() {
     (async()=>{
       try{
       setLoading(true)
-      const response = await axios.get<QuizAxiosType>("http://localhost:5000/quiz");
+      const response = await axios.get<QuizAxiosType>("https://sagemindbase.herokuapp.com/quiz");
       setQuizes(response.data.quizes)
       setLoading(false)
     }catch(error){
