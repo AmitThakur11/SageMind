@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {rules} from "../../database";
+// import {rules} from "../../database";
 import { useQuiz } from "../../Context/QuizContext";
 import "./QuizRule.css"
 import {v4 as uuid} from 'uuid';
@@ -9,16 +9,14 @@ import {useEffect} from 'react'
 
 const QuizRule = () => {
   const { id } = useParams();
-  const {dispatch} = useQuiz()
+  const {dispatch,quizes,loading} = useQuiz()
   useEffect(() => dispatch({type : "RESET" , payload : {}}), [dispatch])
-
-
   return (
     <section className="instruction">
-      <div className="instruction-box">
+      {!loading && <div className="instruction-box">
         <div className="rules-title">INSTRUCIONS</div>
         <ul className="rules-section">
-          {rules.map((rule) => {
+          {quizes.rules.map((rule) => {
             return <li key = {uuid()}className="rule">{rule}</li>;
           })}
         </ul>
@@ -30,6 +28,7 @@ const QuizRule = () => {
           </Link>
         </div>
       </div>
+}
     </section>
   );
 };

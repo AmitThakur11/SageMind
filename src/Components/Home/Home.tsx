@@ -1,19 +1,18 @@
 
-import quizData from "../../database";
 import "./Home.css"
 import { Link } from "react-router-dom";
 import {  useQuiz } from "../../Context/QuizContext";
 const Home = () => {
-  const { dispatch } = useQuiz();
+  const { dispatch ,quizes , loading} = useQuiz();
   (()=>{
     return dispatch({type : "RESET" , payload : {}})
   })()
+  console.log(loading)
 
   return (
     <section className ="home-section">
-      {/* <div className = "title">QUIZ</div> */}
       <div className ="home-sub-section">
-        {quizData.map((quiz) => {
+        {!loading &&  quizes.quizData.map((quiz) => {
           return (
             <Link to={`/quizinfo/${quiz.id}`} key ={quiz.id}>
             <section className ="quiz-picker"
@@ -34,5 +33,6 @@ const Home = () => {
     
   );
 };
+
 
 export default Home;

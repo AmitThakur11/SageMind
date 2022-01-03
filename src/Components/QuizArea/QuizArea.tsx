@@ -2,25 +2,23 @@ import { useParams } from "react-router";
 import { useQuiz } from "../../Context/QuizContext";
 import { useState, useEffect } from "react";
 import "./QuizArea.css"
-import quizData from "../../database";
-import { QuizData } from "../../Types/QuizType";
+import { QuizData ,Quiz,Quizes,QuizAxiosType} from "../../Types/QuizType";
+import axios ,{AxiosError} from "axios"
 import ScoreCard from "../ScoreCard/ScoreCard";
 const QuizArea = () => {
   const { id } = useParams();
-  const { dispatch } = useQuiz();
+  const { dispatch ,quizes , loading ,setLoading} = useQuiz();
   const [current1, setCurrent1] = useState(0);
+  const [quiz,setQuiz] = useState([] as Quiz[]);
+
   const [count,setCount]=useState(0)
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(15); 
   
 
  
-  const chosenQuiz = quizData.find(
-    (quiz) => quiz.id === parseInt(id, 10)
-  ) as QuizData;
-  const { quiz } = chosenQuiz;
-
   
-  const nextQuestion = () => {
+  
+  const nextQuestion = (quiz:Quiz[]) => {
     setCount((count)=>count+1)
     setCurrent1(current1 + 1);
     if (current1 < quiz.length - 1) {
@@ -28,14 +26,14 @@ const QuizArea = () => {
     }
   };
 
-  if (timer === 0 && quiz.length > current1) {
+  if(timer === 0 && quiz.length > current1) {
     setCount((count)=>count+1)
     setCurrent1((current)=>current + 1);
     if (current1 < quiz.length - 1) {
     setTimer(15);
   }
   }
-
+  
   const CalculateScore = (score: number) => {
     const dividend = (score / quiz.length) * 10;
     return dividend;
@@ -56,9 +54,31 @@ const QuizArea = () => {
     return () => clearInterval(time as number);
   },[timer]);
 
+
+  useEffect(()=>{
+    (async()=>{
+      try{
+      setLoading(true)
+      const response = await axios.get<QuizAxiosType>("http://localhost:5000/quiz");
+      const chosenQuiz = response.data.quizes.quizData.find(
+            (quiz) => quiz.id === parseInt(id, 10)
+          ) as QuizData;
+      setQuiz(chosenQuiz.quiz)
+      setLoading(false)
+    }catch(error){
+      if(axios.isAxiosError(error)){
+        const serverError = error as AxiosError<{msg :String}>
+        console.log(serverError)
+      }
+      console.log(error)
+
+    }})()
+        
+  }, [setLoading,setQuiz])
   return (
-    <section className="quiz-section">
-      {quiz.length > current1 ? (
+    <>
+    {!loading && <section className="quiz-section">
+      {quiz.length > current1  ? (
         <div className="quiz-card">
           <div className="current-question">{current1 + 1}/{quiz.length}</div>
 
@@ -92,7 +112,7 @@ const QuizArea = () => {
                           }
                         }
                       });
-                      nextQuestion();
+                      nextQuestion(quiz);
                     }}
                   >
                     {option}
@@ -108,6 +128,8 @@ const QuizArea = () => {
         </div>)
       }
     </section>
+}
+</>
   );
 };
 export default QuizArea;

@@ -14,11 +14,8 @@
 .home-sub-section{
     margin-top:10px;
 
-    width : 100%;
-    height: 70%;
-    display: flex;
-    
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .quiz-picker{
@@ -27,8 +24,8 @@
     place-content: center;
     text-align: center;
     padding:20px;
-    height : 200px;
-    width:200px;
+    height : 160px;
+    width: 160px;
     background: rgb(248, 249, 250);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
@@ -41,14 +38,14 @@
 
 }
 .quiz-picker> a > img{
-    width:120px;
+    width:100px;
 }
 .quiz-name{
     font-size: 22px;
 }
 
 
-@media(max-width : 650px){
+@media(max-width : 780px){
     .title{
         font-size: 32px;
         margin-left: 20px;
@@ -58,16 +55,15 @@
         display: flex;
         justify-content: center;
         z-index : -1;
+
         /* background-color: chocolate; */
         
     
     }
     .home-sub-section{
-        margin-top:10px;
+    grid-template-columns: 1fr 1fr 1fr;
+
         
-        
-        
-        flex-wrap: wrap;
     }
     
     .quiz-picker{
@@ -76,12 +72,12 @@
         place-content: center;
         text-align: center;
         padding:15px;
-        height : 160px;
-        width:160px;
+        height : 140px;
+        width:140px;
         border-radius: 4px;
     }
     .quiz-picker> a > img{
-        width:100px;
+        width:90px;
     }
     .quiz-name{
         font-size: 22px;
@@ -90,19 +86,22 @@
 }
 @media(max-width : 480px){
     .home-sub-section{
-        display: flex;
+    grid-template-columns: 1fr 1fr;
         
+        
+    }
+    .quiz-picker{
+        width:120px;
+        height: 120px;
+    }
+    .quiz-picker> a > img{
+        width:70px;
+    }
+    .quiz-name{
+        font-size: 20px;
     }
 }
 
-@media(max-width : 358px){
-    .home-sub-section{
-        display: flex;
-        flex-direction: column;
-        place-items: center;
-        
-    }
-}
 
 
 

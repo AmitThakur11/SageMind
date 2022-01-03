@@ -16,7 +16,17 @@ export type Option = {
     quizCover : string;
     quiz: Quiz[];
   };
-  
+
+  export type Quizes = {
+    quizData : QuizData[];
+    rules : string[]
+  }
+
+  export type QuizAxiosType = {
+    success : boolean,
+    quizes : Quizes
+  }
+
   export type QuestionsAnswered = {
     question?: string;
     chosenValue?: string;
@@ -60,5 +70,3 @@ export type Option = {
     dispatch: Dispatch;
   };
 
-  export type Rules = []
-  
