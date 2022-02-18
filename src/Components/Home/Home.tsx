@@ -7,7 +7,6 @@ const Home = () => {
   (()=>{
     return dispatch({type : "RESET" , payload : {}})
   })()
-  console.log(loading)
 
   return (
     <section className ="home-section">
