@@ -7,7 +7,7 @@ import Profile from "./Components/Profile/Profile";
 import About from "./Components/About/About";
 import LeaderBoard from "./Components/LeaderBoard/LeaderBoard";
 import Login from "./Components/Login/Login";
-import Signup from "./Components/Signup/Signup";
+import SignUp from "./Components/Signup/Signup";
 import QuizArea from "./Components/QuizArea/QuizArea";
 import QuizRule from "./Components/QuizRule/QuizRule";
 import {useQuiz} from "./Context/QuizContext"
@@ -47,7 +47,7 @@ function App() {
         <Route path ="/profile" element = {<Profile/>}/>
         <Route path ="/about" element ={<About/>}/>
         <Route path ="/login" element ={<Login/>}/>
-        <Route path ="/signup" element ={<Signup/>}/>
+        <Route path ="/signup" element ={<SignUp/>}/>
 
       
       </Routes>
