@@ -2,10 +2,10 @@ export type InitialAuthState ={
 
     login : boolean;
     user :{
-        username? : string ,
+        username?: string ,
         email : string,
         password : string,
-        cpassword? : string
+        cpassword? : string 
     }
 
 }

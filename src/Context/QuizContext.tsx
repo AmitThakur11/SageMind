@@ -19,8 +19,8 @@ export const quizContext = createContext(
     dispatch: Dispatch;
     quizes: Quizes;
     loading: boolean;
-    setLoading : any;
-    setQuizes : any
+    setLoading : (loading : boolean)=> void
+    setQuizes : (quizes : Quizes)=>void
   }
 );
 

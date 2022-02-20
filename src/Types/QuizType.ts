@@ -48,8 +48,8 @@ export type Option = {
   
   export type QuizAnswer = {
     question?: string;
-    chosenValue?: string;
-    rightValue ?: string;
+    chosenValue?: string ;
+    rightValue? : string  ;
 
   }
   export type  Payload = {
