@@ -56,7 +56,7 @@ const QuizArea = () => {
     (async()=>{
       try{
       setLoading(true)
-      const response = await axios.get<QuizAxiosType>("/quiz/all");
+      const response = await axios.get<QuizAxiosType>("/quiz");
       const chosenQuiz = response.data.quizes.quizData.find(
             (quiz) => quiz._id === id) as QuizData;
       setQuiz(chosenQuiz.quiz);

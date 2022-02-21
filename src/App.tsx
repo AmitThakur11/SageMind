@@ -25,7 +25,7 @@ function App() {
     (async()=>{
       try{
       setLoading(true)
-      const response = await axios.get<QuizAxiosType>("/quiz/all");
+      const response = await axios.get<QuizAxiosType>("/quiz");
       setQuizes(response.data.quizes)
       setLoading(false)
     }catch(error){
@@ -33,7 +33,6 @@ function App() {
         const serverError = error as AxiosError<{msg :String}>
         console.log(serverError)
       }
-
     }})()
         
   }, [setLoading,setQuizes])
