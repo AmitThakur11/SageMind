@@ -14,7 +14,6 @@ const Profile = ()=>{
     const [results,setResults] = useState([] as AxiosResultsType)
     const navigate = useNavigate()
     useEffect(()=>{
-
         (async()=>{
             try{
                 axiosInitialiser()
