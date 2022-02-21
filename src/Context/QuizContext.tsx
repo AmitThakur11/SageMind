@@ -10,7 +10,6 @@ import {
   InitialState,
   Dispatch,
   Action,
-  QuizData,
   Quizes,
 } from "../Types/QuizType";
 import { useAuth } from "./AuthContext";
@@ -23,7 +22,7 @@ export const quizContext = createContext(
     loading: boolean;
     setLoading : (loading : boolean)=> void;
     setQuizes : (quizes : Quizes)=>void;
-    saveResult : ()=>void
+    saveResult : (quizId : string)=>void
   }
 );
 
@@ -43,10 +42,10 @@ const QuizProvider = ({ children }: { children: ReactNode }) => {
     const { _id, answer, quizAnswer } = action.payload;
     switch (action.type) {
       case "SELECT QUIZ": {
-        const findQuiz = quizes.quizData.find(
-          (quiz) => quiz._id === _id
-        ) as QuizData;
-        return { ...state, quiz_id: findQuiz._id as string };
+        // const findQuiz = quizes.quizData.find(
+        //   (quiz) => quiz._id === _id
+        // ) as QuizData;
+        return { ...state, quiz_id:_id as string };
       }
       case "SELECT ANSWER": {
         if (answer) {
@@ -91,7 +90,7 @@ const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
 
-  const saveResult = async()=>{
+  const saveResult = async(quizId : string)=>{
     console.log(state)
     try{
       console.log(authState)
@@ -100,7 +99,8 @@ const QuizProvider = ({ children }: { children: ReactNode }) => {
         navigate("/login");
         return
       }
-      const {data} = await axios.post("/quiz/6211a87af7a177bda49d1575/result/save",{result : state.questionsAnswered})
+      console.log(state)
+      const {data} = await axios.post(`quiz/${quizId}/result/save`,{result : state.questionsAnswered})
       console.log(data)
     }catch(err){
       if(axios.isAxiosError(err)){

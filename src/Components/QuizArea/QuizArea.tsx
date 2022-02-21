@@ -121,7 +121,7 @@ const QuizArea = () => {
         </div>
       ) : (
         <div>
-         <ScoreCard cal_score ={CalculateScore} quiz ={quiz} /> 
+         <ScoreCard cal_score ={CalculateScore} quiz ={quiz} quizId = {id} /> 
         </div>)
       }
     </section>

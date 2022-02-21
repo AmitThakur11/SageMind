@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInitialiser = ()=>{
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = 'http://sagemindbase.herokuapp.com/';
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('quizToken');
 
 }

@@ -32,7 +32,7 @@ const Profile = ()=>{
             
         })()
 
-    },[])
+    },[setLoading])
     return(
         <>
         {
