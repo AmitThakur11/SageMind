@@ -1,7 +1,7 @@
 import "./Header.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { GrGithub, GrTwitter } from "react-icons/gr";
+import { GrGithub, GrTwitter,GrUser } from "react-icons/gr";
 const Header = () => {
   const [menu, setMenu] = useState(false);
   return (
@@ -34,6 +34,9 @@ const Header = () => {
           </div>
           <Link to="/">
             <div onClick={() => setMenu(false)}>QUIZ</div>
+          </Link>
+          <Link to="/profile">
+            <GrUser/>
           </Link>
           
             <a href ="https://github.com/AmitThakur11">

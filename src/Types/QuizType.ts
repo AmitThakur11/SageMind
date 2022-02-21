@@ -4,14 +4,14 @@ export type Option = {
   };
   
   export type Quiz = {
-    id: number;
+    _id: string;
     question: string;
     points: number;
     options: Option[];
   };
   
   export type QuizData = {
-    id: number;
+    _id: string;
     quizName: string;
     quizCover : string;
     quiz: Quiz[];
@@ -40,7 +40,7 @@ export type Option = {
   };
   
   export type InitialState = {
-    quiz_id: number;
+    quiz_id: string;
     questionsAnswered: QuestionsAnswered[];
     score: number;
     current: number;
@@ -53,7 +53,7 @@ export type Option = {
 
   }
   export type  Payload = {
-    id?: number;
+    _id?: string;
     answer?: boolean;
     quizAnswer? : QuizAnswer 
 
@@ -69,4 +69,17 @@ export type Option = {
     state: InitialState;
     dispatch: Dispatch;
   };
+
+  export type ResultType = {
+    
+      _id: string,
+      quiz: {
+        _id: string;
+        quizName: string;
+        quizCover : string;
+      }
+      result: [QuizAnswer]
+  }
+
+  export type AxiosResultsType = ResultType[]
 

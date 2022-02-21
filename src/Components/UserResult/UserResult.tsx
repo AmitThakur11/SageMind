@@ -18,7 +18,7 @@ export const UserResponse:React.FC<UserResponseProps> =({quiz , setResponse})=>{
     <div className="UserResult">
        <div className  ="responseBox">
           <h1>Response</h1>
-          <button onClick ={()=>setResponse(false)}><FaRegTimesCircle/></button>
+          <button className="abortBtn" onClick ={()=>setResponse(false)}><FaRegTimesCircle/></button>
           <div className ="response">
             {
               questionsAnswered.map(({question,rightValue,chosenValue, yourChoice})=>{

@@ -1,0 +1,41 @@
+.resultContainer{
+    position: relative;
+}
+.result{
+    /* margin-top: 8rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resultCard{
+    background-color: white;
+    padding : 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    place-items: center;
+    width: 80%;
+    max-width: 460px;
+    min-height: 5rem;
+    margin: 1rem;
+}
+.resultCard > img{
+    height: 4rem;
+}
+
+.showBtn{
+    border:0;
+    padding: 4px 8px;
+    font-weight: 600;
+    background-color: black;
+    color :white;
+    width: fit-content;
+    justify-self: end;
+}
+
+.logoutBtn{
+    /* position: absolute; */
+    top:20px;
+    right: 80px;
+    height: 40px;
+    
+}

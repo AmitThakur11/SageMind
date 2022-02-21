@@ -14,9 +14,10 @@ type ScoreCardProps = {
   quiz : Quiz[]
 };
 const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score , quiz   }) => {
-  const { state ,dispatch } = useQuiz();
+  const { state ,dispatch ,saveResult } = useQuiz();
   const navigate = useNavigate()
   const [showResponse , setResponse] = useState<boolean>(false);
+
 
   
   return (
@@ -60,6 +61,8 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ cal_score , quiz   }) => {
       </div>
       <div className="score-btn">
         <button className="btn-1" onClick ={()=>{setResponse((res)=>!res)}}>Answers</button>
+        <button className="btn-1" onClick = {()=>{
+        saveResult()}}>Save</button>
         <button className="btn-2" onClick = {()=>{
           dispatch({type : "RESET",payload:{}})
           navigate("/")

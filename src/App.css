@@ -26,7 +26,10 @@ body{
     
     height : 80vh;
 }
-/* 
-@media(max-width : 650px){
-    
-} */
+
+@media(max-width : 480px){
+.content{
+    margin-top: 60px;
+
+}    
+}

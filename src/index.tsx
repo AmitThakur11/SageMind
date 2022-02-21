@@ -7,13 +7,14 @@ import AuthProvider from "./Context/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <AuthProvider>
       <QuizProvider>
-        <Router>
           <App />
-        </Router>
       </QuizProvider>
     </AuthProvider>
+    </Router>
+
     ,
   </React.StrictMode>,
   document.getElementById("root")

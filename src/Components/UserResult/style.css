@@ -20,7 +20,7 @@
     font-size: 26px;
     color:rgb(241, 84, 84)
   }
-  .responseBox > button{
+  .abortBtn{
     position: absolute;
     top:10px;
     cursor: pointer;

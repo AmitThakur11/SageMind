@@ -8,18 +8,15 @@ import ScoreCard from "../ScoreCard/ScoreCard";
 const QuizArea = () => {
   const { id } = useParams();
   const { dispatch ,loading ,setLoading} = useQuiz();
+
   const [current1, setCurrent1] = useState(0);
   const [quiz,setQuiz] = useState([] as Quiz[]);
-
   const [count,setCount]=useState(0)
   const [timer, setTimer] = useState(15); 
-  
 
- 
-  
   
   const nextQuestion = (quiz:Quiz[]) => {
-    setCount((count)=>count+1)
+    setCount(count+1)
     setCurrent1(current1 + 1);
     if (current1 < quiz.length - 1) {
       setTimer(15);
@@ -59,11 +56,11 @@ const QuizArea = () => {
     (async()=>{
       try{
       setLoading(true)
-      const response = await axios.get<QuizAxiosType>("https://sagemindbase.herokuapp.com/quiz");
+      const response = await axios.get<QuizAxiosType>("/quiz/all");
       const chosenQuiz = response.data.quizes.quizData.find(
-            (quiz) => quiz.id === parseInt(id, 10)
-          ) as QuizData;
-      setQuiz(chosenQuiz.quiz)
+            (quiz) => quiz._id === id) as QuizData;
+      setQuiz(chosenQuiz.quiz);
+     
       setLoading(false)
     }catch(error){
       if(axios.isAxiosError(error)){
