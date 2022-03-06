@@ -5,10 +5,12 @@ import "./Profile.css"
 export type ResultCardProps = {
   result: ResultType;
 };
+
 export const ResultCard: React.FC<ResultCardProps> = ({ result }) => {
   const [show, setShow] = useState(false);
+  console.log(result)
   return (
-    <div>
+    <div className ="resultCard_container">
       <section className="resultCard">
         <img src={result.quiz.quizCover} alt="quiz cover" />
         <p>{result.quiz.quizName}</p>

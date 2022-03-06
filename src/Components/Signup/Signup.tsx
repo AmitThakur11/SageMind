@@ -5,12 +5,14 @@ import { IoEyeOutline } from "react-icons/io5";
 import AuthCover from "../../media/auth.png";
 import { useAuth } from "../../Context/AuthContext";
 import { InputType ,InputEventType,ButtonEventType} from "../../Types/AuthType";
+import { useNavigate } from "react-router";
 
 
 
 const SignUp = () => {
   const [input,setInput] = useState({username : "",email : "", password : "" , cpassword : ""})
   const {register} = useAuth()
+  const navigate = useNavigate()
   const getInput = (e:InputEventType):void=>{
     const {name ,value} = e.target;
     setInput((input)=>{
@@ -64,7 +66,7 @@ const SignUp = () => {
           </div>
           <div className="authBox__footer">
             Already registered?{" "}
-            <span>Log in</span>
+            <span onClick = {()=>navigate("/login")}>Log in</span>
           </div>
         </form>
       </div>

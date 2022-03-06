@@ -6,11 +6,13 @@ import AuthCover from "../../media/auth.png";
 import { useAuth } from "../../Context/AuthContext";
 import { InputType ,InputEventType,ButtonEventType } from "../../Types/AuthType";
 import Loader from "../Loader/Loader";
+import { useNavigate } from "react-router";
 
 const Login = () => {
 
   const [input,setInput] = useState({email : "", password : ""})
   const {login,loading} = useAuth()
+  const navigate = useNavigate()
   const getInput = (e:InputEventType):void=>{
     const {name ,value} = e.target;
     setInput((input)=>{
@@ -40,10 +42,10 @@ const Login = () => {
             </div>
             <div className="btnContainer">
               <button type="submit" onClick={(e)=>loginAction(e,input)}>Login</button>
-              <button type="submit">Demo</button>
+              <button type="submit" onClick={(e)=>loginAction(e,{email: "test2@gmail.com" , password : "thakur@54321"})}>Demo</button>
             </div>
             <p className="authBox__footer">
-              New here? <span>Click here</span>
+              New here? <span onClick = {()=>navigate("/signup")}>Click here</span>
             </p>
           </form>
         </section>

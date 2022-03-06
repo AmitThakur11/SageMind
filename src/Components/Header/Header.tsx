@@ -2,8 +2,10 @@ import "./Header.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GrGithub, GrTwitter,GrUser } from "react-icons/gr";
+import { useNavigate } from "react-router";
 const Header = () => {
   const [menu, setMenu] = useState(false);
+  const navigate = useNavigate()
   return (
     <section className="navbar">
       <header>

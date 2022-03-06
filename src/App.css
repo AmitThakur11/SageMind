@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap');
 
-
+:root{
+    --shadow : rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
 *{
     margin :0;
     padding:0;
@@ -9,8 +11,9 @@
     text-decoration: none;
 }
 body{
-    background-image : url("https://images.unsplash.com/photo-1569531115477-5e9a74a6a8ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwYXR0ZXJufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-    background-size: contain;
+    /* background-image : url("https://images.unsplash.com/photo-1569531115477-5e9a74a6a8ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwYXR0ZXJufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"); */
+    /* background-size: contain; */
+    background-color: rgb(235, 235, 235);
 }
 
 .App{
