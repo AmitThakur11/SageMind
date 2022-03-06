@@ -15,14 +15,14 @@ const Header = () => {
             className={menu ? `fa fa-close` : `fa fa-reorder`}
           ></i>
         </div>
-        <div className="logo">
+        <div className="logo" onClick ={()=>navigate("/")}>
           <img src="https://i.ibb.co/cFjKjRQ/003-ninja.png" alt="logo" />
-          <Link to="/">
+          
             <div className="name">
               <div className="first">SAGE</div>
               <div className="last">MIND</div>
             </div>
-          </Link>
+      
         </div>
         <div
           className={menu ? `header-options active ` : `header-options off `}
@@ -37,7 +37,7 @@ const Header = () => {
           <Link to="/">
             <div onClick={() => setMenu(false)}>QUIZ</div>
           </Link>
-          <Link to="/profile">
+          <Link to="/profile" onClick={()=>setMenu(false)}>
             <GrUser/>
           </Link>
           
