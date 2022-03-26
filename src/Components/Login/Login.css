@@ -95,7 +95,7 @@ input::placeholder{
   
 }
 
-@media(max-width: 680px){
+@media(max-width: 580px){
   .authContainer >img{
     position: absolute;
     width: 90%;
