@@ -15,6 +15,7 @@ import {useQuiz} from "./Context/QuizContext"
 import {QuizAxiosType} from "./Types/QuizType"
 import axios,{AxiosError} from 'axios'
 import axiosInitialiser from "./utils/axiosInitialize";
+import { ToastContainer} from 'react-toastify';
 
 function App() {
   const {setLoading ,setQuizes} =useQuiz()
@@ -53,6 +54,16 @@ function App() {
 
       
       </Routes>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover/>
       </section>
     </div>
   );

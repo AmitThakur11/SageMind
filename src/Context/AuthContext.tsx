@@ -3,7 +3,7 @@ import {useContext , createContext, ReactNode } from "react"
 import { InitialAuthState, AuthAction ,InputType,RegisterType,LoginType,AuthContextType} from "../Types/AuthType"
 import axios , {AxiosError} from "axios"
 import { useNavigate } from "react-router";
-
+import {toast} from "react-toastify"
 
 // export type AuthHandleType = (input : InputType)=>void
 // export type AuthContextType = {authState : InitialAuthState , authDispatch : AuthDispatch  ,register : AuthHandleType , login : AuthHandleType , loading : boolean }
@@ -58,36 +58,41 @@ const AuthProvider = ({children}:{children : ReactNode})=>{
         try{
             setLoading(true)
             const response = await axios.post<RegisterType>("/auth/register",input);
+            toast.success("Registered successfully")
             setLoading(false)
             navigate("/")
             console.log(response)
-        }catch(err){
+        }catch(err : any){
             setLoading(false)
             if(axios.isAxiosError(err)){
                 const serverError = err as AxiosError<{msg :String}>
-                return console.log(serverError)
+                return toast.error(serverError)
               }
-              console.log(err)
+              toast.error(err.response.message)
         }
     
     }
 
     const login = async(input : InputType)=>{
-
         try{
+            const {email,password} = input;
+            if(email === "" && password === ""){
+                return toast.warn("Empty field")
+            }
             setLoading(true)
             const {data} = await axios.post<LoginType>("/auth/login",input);
             authDispatch({type : "LOGIN",payload : {user : data.value.user , token : data.value.token}})
             setLoading(false)
+            toast.success("Hi Sage!")
             navigate("/")
             
-        }catch(err){
+        }catch(err : any){
             setLoading(false)
             if(axios.isAxiosError(err)){
                 const serverError = err as AxiosError<{msg :String}>
-                return console.log(serverError)
+                return toast.error(serverError)
               }
-              console.log(err)
+              toast.error(err.response.message)
         }
     
     }
