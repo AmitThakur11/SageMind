@@ -34,6 +34,7 @@ export const authReducer = (authState:InitialAuthState , action : AuthAction):In
         }
         case "LOGOUT":{
             localStorage.removeItem('quizToken');
+            toast.success("Sage logged out")
             return initialAuthState
         }
         
@@ -54,13 +55,17 @@ const AuthProvider = ({children}:{children : ReactNode})=>{
     const navigate = useNavigate();
 
     const register = async(input : InputType)=>{
+        const {email,password,username,cpassword} = input;
+            if(email === "" && password === ""&& username === "" && cpassword === ""){
+                return toast.warn("Empty field")
+            }
 
         try{
             setLoading(true)
-            const response = await axios.post<RegisterType>("/auth/register",input);
+            await axios.post<RegisterType>("/auth/register",input);
             setLoading(false)
             toast.success("Registered successfully")
-            navigate("/")
+            navigate("/login")
             
         }catch(err : any){
             setLoading(false)

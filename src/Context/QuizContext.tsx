@@ -98,7 +98,8 @@ const QuizProvider = ({ children }: { children: ReactNode }) => {
         return
       }
       setLoading(true)
-      const {data} = await axios.post(`quiz/${quizId}/result/save`,{result : state.questionsAnswered})
+      await axios.post(`quiz/${quizId}/result/save`,{result : state.questionsAnswered})
+      
       setLoading(false)
       toast.success("Result saved")
       navigate("/profile")
