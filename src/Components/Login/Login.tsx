@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 const Login = () => {
 
   const [input,setInput] = useState({email : "", password : ""})
-  const [showPassword,setShowPassword] = useState(true)
+  const [showPassword,setShowPassword] = useState(false)
   const {login,loading} = useAuth()
   const navigate = useNavigate()
   const getInput = (e:InputEventType):void=>{
@@ -37,9 +37,9 @@ const Login = () => {
             <div className="inputBox">
               <input name="email" placeholder="Email" value = {input.email} onChange ={(e)=>getInput(e)}/>
               <div className="password">
-                <input type ={showPassword?"password" : "text"} placeholder="Password" name="password" value = {input.password} onChange ={(e)=>getInput(e)} />{" "}
+                <input type ={showPassword?"text" : "password"} placeholder="Password" name="password" value = {input.password} onChange ={(e)=>getInput(e)} />{" "}
                 <span onClick={showPass}>
-                  {showPassword?<IoEyeOutline />:<IoEyeOffOutline/>}
+                  {!showPassword?<IoEyeOutline />:<IoEyeOffOutline/>}
                 </span>
               </div>
             </div>
