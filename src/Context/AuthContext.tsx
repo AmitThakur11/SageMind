@@ -58,10 +58,10 @@ const AuthProvider = ({children}:{children : ReactNode})=>{
         try{
             setLoading(true)
             const response = await axios.post<RegisterType>("/auth/register",input);
-            toast.success("Registered successfully")
             setLoading(false)
+            toast.success("Registered successfully")
             navigate("/")
-            console.log(response)
+            
         }catch(err : any){
             setLoading(false)
             if(axios.isAxiosError(err)){
