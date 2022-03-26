@@ -30,7 +30,6 @@ export const authReducer = (authState:InitialAuthState , action : AuthAction):In
     switch(action.type){
         case "LOGIN":{
             localStorage.setItem("quizToken",token as string)
-            console.log(user)
             return {...authState , login :true , user : user }
         }
         case "LOGOUT":{

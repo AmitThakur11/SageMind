@@ -1,7 +1,7 @@
 // IoEyeOffOutline 
 import React,{ useState } from "react";
 import "./Login.css";
-import { IoEyeOutline} from "react-icons/io5";
+import { IoEyeOutline , IoEyeOffOutline} from "react-icons/io5";
 import AuthCover from "../../media/auth.png";
 import { useAuth } from "../../Context/AuthContext";
 import { InputType ,InputEventType,ButtonEventType } from "../../Types/AuthType";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 const Login = () => {
 
   const [input,setInput] = useState({email : "", password : ""})
+  const [showPassword,setShowPassword] = useState(true)
   const {login,loading} = useAuth()
   const navigate = useNavigate()
   const getInput = (e:InputEventType):void=>{
@@ -25,6 +26,8 @@ const Login = () => {
     login(input)
   }
 
+  const showPass =()=>setShowPassword(!showPassword)
+
   return (
     <>
     {loading && <Loader/>}
@@ -34,9 +37,9 @@ const Login = () => {
             <div className="inputBox">
               <input name="email" placeholder="Email" value = {input.email} onChange ={(e)=>getInput(e)}/>
               <div className="password">
-                <input placeholder="Password" name="password" value = {input.password} onChange ={(e)=>getInput(e)} />{" "}
-                <span>
-                  <IoEyeOutline />
+                <input type ={showPassword?"password" : "text"} placeholder="Password" name="password" value = {input.password} onChange ={(e)=>getInput(e)} />{" "}
+                <span onClick={showPass}>
+                  {showPassword?<IoEyeOutline />:<IoEyeOffOutline/>}
                 </span>
               </div>
             </div>
