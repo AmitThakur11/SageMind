@@ -8,7 +8,6 @@ export type ResultCardProps = {
 
 export const ResultCard: React.FC<ResultCardProps> = ({ result }) => {
   const [show, setShow] = useState(false);
-  console.log(result)
   return (
     <div className ="resultCard_container">
       <section className="resultCard">
@@ -19,7 +18,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ result }) => {
         </button>
       </section>
       {show && (
-        <div className="UserResult">
+        <div className="userResult">
           <div className="responseBox">
             <h1>Response</h1>
             <button className="abortBtn" onClick={() => setShow(false)}>
