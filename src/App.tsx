@@ -16,6 +16,7 @@ import {QuizAxiosType} from "./Types/QuizType"
 import axios,{AxiosError} from 'axios'
 import axiosInitialiser from "./utils/axiosInitialize";
 import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const {setLoading ,setQuizes} =useQuiz()

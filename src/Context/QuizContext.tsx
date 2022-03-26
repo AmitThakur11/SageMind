@@ -14,6 +14,7 @@ import {
 } from "../Types/QuizType";
 import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router";
+import {toast} from "react-toastify"
 export const quizContext = createContext(
   {} as {
     state: InitialState;
@@ -91,23 +92,22 @@ const QuizProvider = ({ children }: { children: ReactNode }) => {
 
 
   const saveResult = async(quizId : string)=>{
-    console.log(state)
     try{
-      console.log(authState)
       if(!authState.login){
-        
         navigate("/login");
         return
       }
-      console.log(state)
+      setLoading(true)
       const {data} = await axios.post(`quiz/${quizId}/result/save`,{result : state.questionsAnswered})
-      console.log(data)
-    }catch(err){
+      setLoading(false)
+      toast.success("Result saved")
+      navigate("/profile")
+    }catch(err:any){
       if(axios.isAxiosError(err)){
         const serverError = err as AxiosError<{msg :String}>
-        return console.log(serverError)
+        return toast.error(serverError)
       }
-      console.log(err)
+      toast.error(err.response.message)
 
     }
   }
