@@ -1,5 +1,5 @@
 .loaderContainer{
-    background-color: rgba(255, 196, 0, 0.5) ;
+    background-color: rgb(235, 235, 235);
     width: 100vw;
     display: grid;
     place-items: center;

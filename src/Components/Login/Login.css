@@ -38,6 +38,7 @@ font-weight: 700;
   font-size: 24px;
   text-align: right;
   margin:0px 4px;
+  cursor: pointer;
   color:var(--primaryColor)
 }
 
@@ -90,6 +91,7 @@ input::placeholder{
 
 .authBox__footer > span{
       color:var(--primary-color);
+      cursor: pointer;
   
 }
 

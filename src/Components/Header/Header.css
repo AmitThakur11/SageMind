@@ -27,6 +27,7 @@ header{
     height:100%;
     display:flex;
     place-items: center;
+    cursor : pointer;
     font-size: 22px;
     font-family: 'Chau Philomene One', sans-serif;
     
