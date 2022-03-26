@@ -3,14 +3,13 @@
     height: 100%;
 }
 .result{
-    /* margin-top: 8rem; */
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
 }
 .resultCard_container{
     width: 80%;
-    max-width: 360px;
+    max-width: 560px;
     background: white;
     box-shadow: var(--shadow);
     padding: 10px;
@@ -33,7 +32,10 @@
     justify-self: start;
     align-self: center;
 }
-
+.userResult{
+    display: flex;
+    justify-content: center;
+}
 .showBtn{
     border:0;
     padding: 8px;
@@ -50,11 +52,16 @@
 }
 
 .logoutBtn{
-    position: absolute;
-    bottom:-30px;
-    right: 10px;
-    height: 40px;
+    position: fixed;
+    bottom:20px;
+    right: 20px;
+
+    transition: 300ms ease-in-out;
     
+    
+}
+.logoutBtn:hover{
+    transform: scale(1.2);
 }
 
 @media(max-width:480px){
